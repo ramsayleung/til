@@ -1,0 +1,25 @@
+#+LATEX_CLASS: ramsay-org-article
+#+LATEX_CLASS_OPTIONS: [oneside,A4paper,12pt]
+#+AUTHOR: Ramsay Leung
+#+EMAIL: ramsayleung@gmail.com
+#+DATE: 2024-04-07 Sun 12:49
+#+begin_quote
+Today I Learned
+#+end_quote
+** Motivation
+   Learning is a critical skill, in programming as well as many other areas.
+
+   As Pablo Picasso once said:
+
+   #+begin_quote
+   I am always doing that which I cannot do, in order that I may learn how to do it.
+   #+end_quote
+** About
+   A collection of concise write-ups on small things I learn day to day across a variety of languages and technologies.
+
+   Stole the idea from:
+
+   - https://github.com/jbranchaud/til
+   - https://github.com/thoughtbot/til
+
+

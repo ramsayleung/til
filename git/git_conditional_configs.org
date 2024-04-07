@@ -1,0 +1,71 @@
+#+LATEX_CLASS: ramsay-org-article
+#+LATEX_CLASS_OPTIONS: [oneside,A4paper,12pt]
+#+AUTHOR: Ramsay Leung
+#+EMAIL: ramsayleung@gmail.com
+#+DATE: 2024-04-07 Sun 12:38
+#+OPTIONS: author:nil ^:{} \n:t H:4
+#+HUGO_BASE_DIR: ~/code/org/ramsayleung.github.io
+#+HUGO_SECTION: en/post/2024
+#+HUGO_CUSTOM_FRONT_MATTER: :toc true
+#+HUGO_AUTO_SET_LASTMOD: t
+#+HUGO_DRAFT: false
+#+DATE: [2024-04-07 Sun 12:38]
+#+TITLE: TIL: Git Conditional Configs
+#+HUGO_TAGS: til git
+#+HUGO_CATEGORIES: til git
+
+Every Git user will have probably been asked to set up their Git at the first time:
+
+#+begin_src sh
+  git config --global user.name "Ramsay Leung"
+  git config --global user.email ramsayleung@gmail.com
+#+end_src
+
+The above command will simply add the =user.name= and =user.email= value into your =~/.gitconfig= file
+
+#+begin_src sh
+  > cat ~/.gitconfig
+  [user]
+      name = Ramsay Leung
+      email = ramsayleung@gmail.com
+  [core]
+      quotepath = false
+  [init]
+      defaultBranch = master
+#+end_src
+
+You could also specify =--local= argument to writes the config values to =.git/config= in whatever project you're currently in.
+
+If you need to simultaneously contribute to your work and open source project on the same laptop, with different Git config values, e.g.(company email address for work-specific projects, personal email address for open source project), what should you do?
+
+You could definitely set up work-specific config as global config, then set up personal config with =--local= for every personal project separately. It works, but tedious and easy to mess-up.
+
+Fortunately, starting from Git version 2.13, Git supports conditional configuration includes, you are capable of setting up different configs for different repositories.
+
+If you add the following config to your global config file:
+#+begin_src toml
+  [includeIf "gitdir:~/projects/oss/"]
+      path = ~/.gitconfig-oss
+
+  [includeIf "gitdir:~/projects/work/"]
+      path = ~/.gitconfig-work
+#+end_src
+
+Then Git will look in the =~/.gitconfig-oss= files for values only if the project you are currently working on matches =~/projects/oss/=.
+
+**Caution**: If you forget to specify the "/" at the end of the git dir, e.g. "~/projects/oss", Conditional Config won't work!
+
+Therefore, you could have a "work" directory and work-specific config here and an "oss" directory with values for your open source projects, etc.
+
+[[file:~/code/org/til/img/git/conditional_config.png]]
+
+Git also supports other filters more than =gitdir=, you could specify a branch name as an include filter with =onbranch=
+
+#+begin_src toml
+  ; include only if we are in a worktree where foo-branch is
+; currently checked out
+[includeIf "onbranch:foo-branch"]
+	path = foo.inc
+#+end_src
+
+Check out [[https://git-scm.com/docs/git-config?ref=blog.gitbutler.com#_includes][the Git docs]] for more details
