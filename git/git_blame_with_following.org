@@ -15,11 +15,11 @@
 #+HUGO_CATEGORIES: til git
 Developers usually use =git blame= in GUI tools like GitHub Blame
 
-[[file:~/code/org/til/img/git/github_blame.png]]
+[[file:../img/git/github_blame.png]]
 
 or using GitLens blame in VSCode:
 
-[[file:~/code/org/til/img/git/git_blame_git_lens_vscode.png]]
+[[file:../img/git/git_blame_git_lens_vscode.png]]
 
 Even though GUI tools is intuitive, but the Git CLI has much more powerful tooling for finding something closer to the real story behind your code.
 
@@ -54,12 +54,12 @@ Let's take [[https://github.com/rails/rails/blob/main/activemodel/lib/active_mod
 #+end_src
 
 #+CAPTION: Vanilla git blame
-[[file:~/code/org/til/img/git/normal_git_blame.png]]
+[[file:../img/git/normal_git_blame.png]]
 
 Ok, it looks like Jonathan Hefner wrote all of this code it appears, let's look at the same code with =git blame -w -C -C -C activemodel/lib/active_model/access.rb=
 
 #+CAPTION: git blame -w -C -C -C
-[[file:~/code/org/til/img/git/git_blame_-w_-C_-C_-C.png]]
+[[file:../img/git/git_blame_-w_-C_-C_-C.png]]
 
 Now we can see that Git has followed this code from file to file over the course of multiple renames, it turns out Jonathan Hefner is the most recent file renamer, Guillermo Iguaran is the original author.
 

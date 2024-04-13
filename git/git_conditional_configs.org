@@ -57,7 +57,7 @@ Then Git will look in the =~/.gitconfig-oss= files for values only if the projec
 
 Therefore, you could have a "work" directory and work-specific config here and an "oss" directory with values for your open source projects, etc.
 
-[[file:~/code/org/til/img/git/conditional_config.png]]
+[[file:../img/git/conditional_config.png]]
 
 Git also supports other filters more than =gitdir=, you could specify a branch name as an include filter with =onbranch=
 
