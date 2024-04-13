@@ -25,7 +25,7 @@ Even though GUI tools is intuitive, but the Git CLI has much more powerful tooli
 
 There are many scenarios that CLI is valuable, the first is ignoring the whitespace changes.
 
-For example, if you formatted your C++ codebase with =clang-format= or Javascript code with =prettier=, you haven't actually changed the codebase, but you're the owner of tons of lines of code.
+For example, if you formatted your C++ codebase with =clang-format= or Javascript codebase with =prettier=, you haven't actually changed the codebase, but you're the owner of tons of lines of code.
 
 The =git blame -w= option will ignore these type of whitespace changes.
 
